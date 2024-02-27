@@ -13,7 +13,7 @@ def single_blog(request):
     return render(request, 'single-blog.html')
 
 def single_product_details(request):
-    return render(request, 'single_product_details.html')
+    return render(request, 'single-product-details.html')
 
 def blog(request):
     return render(request, 'blog.html')
