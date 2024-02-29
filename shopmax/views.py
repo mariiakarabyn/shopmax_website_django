@@ -6,7 +6,7 @@ def index(request):
 def regular(request):
     return render(request, 'regular-page.html')
 
-def catalog(request):
+def shop(request):
     return render(request, 'shop.html')
 
 def single_blog(request):
