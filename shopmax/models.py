@@ -61,7 +61,7 @@ class Brand(models.Model):
 
 class Image(models.Model):
     product = models.ForeignKey(
-        'shop.Product',
+        'shopmax.Product',
         on_delete=models.CASCADE,
         related_name='images',
     )

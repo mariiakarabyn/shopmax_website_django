@@ -1,0 +1,25 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "ShopMax",
+            "database": "maria",
+            "username": "maria",
+            "password": "maria",
+            "connectionTimeout": 30
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "ShopMax",
+            "database": "mariia",
+            "username": "mariia",
+            "password": "mariia"
+        }
+    ]
+}
