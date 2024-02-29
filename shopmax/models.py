@@ -21,7 +21,7 @@ class Category(models.Model):
 
 
 class Size(models.Model):
-    name = models.CharField(max_length=10, verbose_name='Size name')
+    name = models.CharField(max_length=40, verbose_name='Size name')
 
     def __str__(self):
         return self.name

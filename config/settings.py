@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_summernote",
     
     "users",
     "shopmax",
@@ -133,6 +134,8 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 # Default primary key field type

@@ -1,7 +1,9 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from django_summernote.admin import SummernoteModelAdmin
 
 from shopmax.models import Category, Product, Brand, Color, Size, Image
+
 
 class BrandAdmin(admin.ModelAdmin):
     list_display = ('name', 'total_products', 'picture')
@@ -10,7 +12,7 @@ class BrandAdmin(admin.ModelAdmin):
     @staticmethod
     def total_products(obj):
         count = obj.products.count()
-        link = f'/admin/shop/product/?brand__id__exact={obj.id}'
+        link = f'/admin/shopmax/product/?brand__id__exact={obj.id}'
         return format_html(f'<a href="{link}">{count} products</a>')
 
     @staticmethod
@@ -18,6 +20,7 @@ class BrandAdmin(admin.ModelAdmin):
         return format_html(
             f'<img src="{obj.logo.url}" style="max-width: 50px">'
         )
+
 
 class ColorAdmin(admin.ModelAdmin):
     list_display = ('name', 'total_products')
@@ -62,7 +65,8 @@ class ImageInlineAdmin(admin.TabularInline):
         return format_html(
             f'<img src="{obj.image.url}" style="max-width: 80px">'
         )
-        
+
+
 @admin.register(Product)
 class ProductAdmin(SummernoteModelAdmin):
     inlines = (ImageInlineAdmin,)
@@ -85,8 +89,7 @@ class ProductAdmin(SummernoteModelAdmin):
             )
         }),
     )
-        
-    
+
 
 admin.site.site_header = 'Django Shop'
 admin.site.site_title = 'Django Shop'

@@ -5,6 +5,7 @@ from django.urls import path, include
 
 
 urlpatterns = [
+    path('summernote/', include('django_summernote.urls')),
     path("admin/", admin.site.urls),
     path('', include('shopmax.urls'))
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
