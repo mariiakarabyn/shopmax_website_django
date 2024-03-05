@@ -1,7 +1,13 @@
 from django.shortcuts import render
 
+from . models import Category
+
 def index(request):
-    return render(request, 'index.html')
+    categories = Category.objects.all()[:10]
+    context= {
+        'categories': categories
+    }
+    return render(request, 'index.html', context=context)
 
 def regular(request):
     return render(request, 'regular-page.html')
