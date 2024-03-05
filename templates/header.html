@@ -24,7 +24,7 @@
                                     <ul class="single-mega cn-col-4">
                                         <li class="title">Women's Collection</li>
                                         {% for category in categories %}
-                                        <li><a href="shop.html">{{ category.name }}</a></li>
+                                        <li><a href="{% url 'shop' category.slug %}">{{ category.name }}</a></li>
                                         {% endfor %}
                                     </ul>
                                     <ul class="single-mega cn-col-4">

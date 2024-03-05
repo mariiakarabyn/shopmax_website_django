@@ -4,7 +4,7 @@ from .views import index, regular, shop, single_blog, single_product_details, bl
 urlpatterns = [
     path('', index, name='index' ),
     path('regular/', regular, name='regular' ),
-    path('shop/', shop, name='shop' ),
+    path('shop/<slug:slug>/', shop, name='shop' ),
     path('single_blog/', single_blog, name='single_blog' ),
     path('single_product_details/', single_product_details, name='single_product_details' ),
     path('blog/', blog, name='blog' ),
