@@ -4,9 +4,11 @@ from django.db.models import Count
 from . models import Category, Product, Brand
 
 def index(request):
-    brands = Brand.objects.all()[:6]
-    context= {
-        'brands':brands
+    brands = Brand.objects.all()[3:9]        # Fetching first 6 logos
+    categories = Category.objects.all()[:5]  # Fetching first 5 categories
+    context = {
+        'brands': brands,
+        'categories': categories
     }
     return render(request, 'index.html', context=context)
 
