@@ -1,31 +1,36 @@
 from django.shortcuts import render
+from django.db.models import Count
 
 from . models import Category
 
 def index(request):
-    categories = Category.objects.all()[:10]
-    context= {
-        'categories': categories
-    }
+    context= {}
     return render(request, 'index.html', context=context)
 
 def regular(request):
-    return render(request, 'regular-page.html')
+    context= {}
+    return render(request, 'regular-page.html', context)
 
 def shop(request):
-    return render(request, 'shop.html')
+    context= {}
+    return render(request, 'shop.html', context)
 
 def single_blog(request):
-    return render(request, 'single-blog.html')
+    context= {}
+    return render(request, 'single-blog.html', context)
 
 def single_product_details(request):
-    return render(request, 'single-product-details.html')
+    context= {}
+    return render(request, 'single-product-details.html', context)
 
 def blog(request):
-    return render(request, 'blog.html')
+    context= {}
+    return render(request, 'blog.html', context)
 
 def checkout(request):
-    return render(request, 'checkout.html')
+    context= {}
+    return render(request, 'checkout.html', context)
 
 def contact(request):
-    return render(request, 'contact.html')
+    context= {}
+    return render(request, 'contact.html', context)
