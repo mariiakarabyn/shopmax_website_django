@@ -1,10 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Count
 
-from . models import Category, Product
+from . models import Category, Product, Brand
 
 def index(request):
-    context= {}
+    brands = Brand.objects.all()[:6]
+    context= {
+        'brands':brands
+    }
     return render(request, 'index.html', context=context)
 
 def regular(request):

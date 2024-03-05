@@ -9,3 +9,4 @@ def header_categories(request):
     return{
          'categories': categories
     }
+    

@@ -308,30 +308,12 @@
 
     <!-- ##### Brands Area Start ##### -->
     <div class="brands-area d-flex align-items-center justify-content-between">
+        {% for brand in brands %}
         <!-- Brand Logo -->
         <div class="single-brands-logo">
-            <img src="{% static 'img/core-img/brand1.png' %}" alt="">
+            <img src="{{ brand.logo.url }}" alt="{{ brand.name }}">
         </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="{% static 'img/core-img/brand2.png' %}" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="{% static 'img/core-img/brand3.png' %}" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="{% static 'img/core-img/brand4.png' %}" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="{% static 'img/core-img/brand5.png' %}" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="{% static 'img/core-img/brand6.png' %}" alt="">
-        </div>
+        {% endfor %}
     </div>
     <!-- ##### Brands Area End ##### -->
 {% endblock main %}
