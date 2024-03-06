@@ -3,12 +3,17 @@ from django.db.models import Count
 
 from . models import Category, Product, Brand
 
-def index(request):
-    brands = Brand.objects.all()[3:9]        # Fetching first 6 logos
-    categories = Category.objects.all()[:5]  # Fetching first 5 categories
+def index(request, slug=None):
+    if slug is not None:
+        category = get_object_or_404(Category, slug=slug)
+        products = Product.objects.filter(categories=category)[:3]
+    else:
+        products = Product.objects.all()[:5]
+
+    brands = Brand.objects.all()[:6]
     context = {
         'brands': brands,
-        'categories': categories
+        'products': products
     }
     return render(request, 'index.html', context=context)
 

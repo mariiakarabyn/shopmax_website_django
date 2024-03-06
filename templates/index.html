@@ -165,9 +165,13 @@
 
         <div class="container">
             <div class="row">
-                {% for product in products %}
-                {% include "product_card.html" %}
-                {% endfor %}
+                <div class="col-12">
+                    <div class="popular-products-slides owl-carousel">
+                        {% for product in products %}
+                        {% include "prod_card_index.html" %}
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
     </section>
