@@ -6,11 +6,11 @@ from . models import Category, Product, Brand
 def index(request, slug=None):
     if slug is not None:
         category = get_object_or_404(Category, slug=slug)
-        products = Product.objects.filter(categories=category)[:3]
+        products = Product.objects.filter(categories=category)[:9]
     else:
         products = Product.objects.all()[:5]
 
-    brands = Brand.objects.all()[:6]
+    brands = Brand.objects.all()[3:9]
     context = {
         'brands': brands,
         'products': products
@@ -33,9 +33,9 @@ def single_blog(request):
     context= {}
     return render(request, 'single-blog.html', context)
 
-def single_product_details(request):
+def product(request, **kwargs):
     context= {}
-    return render(request, 'single-product-details.html', context)
+    return render(request, 'product.html', context)
 
 def blog(request):
     context= {}
