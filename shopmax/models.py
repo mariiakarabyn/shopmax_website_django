@@ -67,7 +67,6 @@ class Image(models.Model):
     )
     image = models.ImageField(upload_to='images/product', max_length=300)
     url = models.URLField(max_length=512, verbose_name='Image URL')
-    size = models.PositiveIntegerField(blank=True, null=True)
 
     
     def __str__(self):
