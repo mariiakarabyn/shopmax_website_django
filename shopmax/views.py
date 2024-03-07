@@ -1,7 +1,14 @@
+from typing import Any
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Count
 
 from . models import Category, Product, Brand
+
+from django.views.generic import TemplateView, ListView, DetailView
+
+class RegularViev(TemplateView):
+    template_name = 'regular-page.html'
+
 
 def index(request, slug=None):
     if slug is not None:
@@ -17,9 +24,7 @@ def index(request, slug=None):
     }
     return render(request, 'index.html', context=context)
 
-def regular(request):
-    context= {}
-    return render(request, 'regular-page.html', context)
+
 
 def shop(request, **kwargs):
     category = get_object_or_404(Category, slug=kwargs.get('slug'))
@@ -34,7 +39,10 @@ def single_blog(request):
     return render(request, 'single-blog.html', context)
 
 def product(request, **kwargs):
-    context= {}
+    single_product = get_object_or_404(Product, slug=kwargs.get('slug'))
+    context= {
+        'product': single_product
+    }
     return render(request, 'product.html', context)
 
 def blog(request):
