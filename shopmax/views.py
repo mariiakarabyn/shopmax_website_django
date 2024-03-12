@@ -1,13 +1,38 @@
 from typing import Any
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Count, Prefetch
+from django.views.generic import TemplateView, ListView, DetailView
 
 from . models import Category, Product, Brand, Image
 
-from django.views.generic import TemplateView, ListView, DetailView
 
 class RegularViev(TemplateView):
     template_name = 'regular-page.html'
+    
+class SigdleBlogViev(TemplateView):
+    template_name = 'single-blog.html'
+
+class BlogViev(TemplateView):
+    template_name = 'blog.html'
+
+class CheckoutViev(TemplateView):
+    template_name = 'checkout.html'
+    
+class ContactViev(TemplateView):
+    template_name = 'contact.html'
+    
+class AllProductsViev(ListView):
+    template_name = 'shop.html'
+    model = Product
+    context_object_name = 'products'
+    slug_url_kwarg = 'slug'
+    paginate_by = 9
+    
+    def get_queryset(self):
+        return  Product.objects.prefetch_related(
+        Prefetch('images', 
+                 queryset=Image.objects.order_by('-size'))
+        )
 
 
 def index(request, slug=None):
@@ -29,7 +54,6 @@ def index(request, slug=None):
     return render(request, 'index.html', context=context)
 
 
-
 def shop(request, **kwargs):
     category = get_object_or_404(Category, slug=kwargs.get('slug'))
     products = Product.objects.prefetch_related(
@@ -41,9 +65,6 @@ def shop(request, **kwargs):
     }
     return render(request, 'shop.html', context)
 
-def single_blog(request):
-    context= {}
-    return render(request, 'single-blog.html', context)
 
 def product(request, **kwargs):
     single_product = get_object_or_404(Product, slug=kwargs.get('slug'))
@@ -54,14 +75,4 @@ def product(request, **kwargs):
     }
     return render(request, 'product.html', context)
 
-def blog(request):
-    context= {}
-    return render(request, 'blog.html', context)
 
-def checkout(request):
-    context= {}
-    return render(request, 'checkout.html', context)
-
-def contact(request):
-    context= {}
-    return render(request, 'contact.html', context)
