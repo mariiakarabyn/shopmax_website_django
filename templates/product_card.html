@@ -3,13 +3,10 @@
     <div class="single-product-wrapper">
         <!-- Product Image -->
         <div class="product-img">
-            <img src="{{product.images.all.3.image.url}}" alt="">
-            <!-- Hover Thumb -->
-            <img class="hover-img" src="{{product.images.all.4.image.url}}" alt="">
-
+            <img src="{{product.images.all.0.image.url}}" alt="">
             <!-- Product Badge -->
             <div class="product-badge offer-badge">
-                <span>{% if product.discount %}{{product.discount}}% OFF{% else %} {% endif %}</span>
+                <span>{% if product.discount %}{{ product.discount }}% OFF{% endif %}</span>
             </div>
             <!-- Favourite -->
             <div class="product-favourite">
@@ -19,8 +16,8 @@
 
         <!-- Product Description -->
         <div class="product-description">
-            <span>topshop</span>
-            <a href="{% url 'product' product.slug%}">
+            <span>{{ product.brand }}</span>
+            <a href="{% url 'product' product.slug %}">
                 <h6>{{ product.title }}</h6>
             </a>
             <p class="product-price">{{ product.price }}
@@ -33,7 +30,7 @@
             <div class="hover-content">
                 <!-- Add to Cart -->
                 <div class="add-to-cart-btn">
-                    <a href="{% url 'product' product.slug%}" class="btn essence-btn">Add to Cart</a>
+                    <a href="{% url 'product' product.slug %}" class="btn essence-btn">Add to Cart</a>
                 </div>
             </div>
         </div>

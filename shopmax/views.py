@@ -1,8 +1,8 @@
 from typing import Any
 from django.shortcuts import render, get_object_or_404
-from django.db.models import Count
+from django.db.models import Count, Prefetch
 
-from . models import Category, Product, Brand
+from . models import Category, Product, Brand, Image
 
 from django.views.generic import TemplateView, ListView, DetailView
 
@@ -11,11 +11,15 @@ class RegularViev(TemplateView):
 
 
 def index(request, slug=None):
-    if slug is not None:
+    if slug:
         category = get_object_or_404(Category, slug=slug)
-        products = Product.objects.filter(categories=category)[:9]
+        products = Product.objects.filter(categories=category).prefetch_related(
+            Prefetch('images', queryset=Image.objects.order_by('-size'))
+        )[:9]
     else:
-        products = Product.objects.all()[:5]
+        products = Product.objects.all().prefetch_related(
+            Prefetch('images', queryset=Image.objects.order_by('-size'))
+        )[:5]
 
     brands = Brand.objects.all()[3:9]
     context = {
@@ -28,8 +32,11 @@ def index(request, slug=None):
 
 def shop(request, **kwargs):
     category = get_object_or_404(Category, slug=kwargs.get('slug'))
-    products = Product.objects.filter(categories=category)[:9]
-    context= {
+    products = Product.objects.prefetch_related(
+        Prefetch('images', queryset=Image.objects.order_by('-size'))
+    ).filter(categories=category)[:9]
+    
+    context = {
         'products': products
     }
     return render(request, 'shop.html', context)
@@ -40,8 +47,10 @@ def single_blog(request):
 
 def product(request, **kwargs):
     single_product = get_object_or_404(Product, slug=kwargs.get('slug'))
+    main_images = Image.objects.filter(product=single_product).order_by('-size')[:4]
     context= {
-        'product': single_product
+        'product': single_product,
+        'main_images': main_images
     }
     return render(request, 'product.html', context)
 
