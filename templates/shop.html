@@ -89,6 +89,9 @@
                 <div class="col-12">
                     <div class="page-title text-center">
                         <h2>All Products</h2>
+                    {% if category_name %}
+                        <h6>{{ category_name }}</h6>
+                    {% endif %}
                     </div>
                 </div>
             </div>
@@ -246,13 +249,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>    
 
                         <div class="row">
                             {% for product in products %}
                             {% include "product_card.html" %}
                             {% endfor %}
-
+                        </div>
                     <!-- Pagination -->
                     <nav aria-label="navigation">
                         <ul class="pagination mt-50 mb-70">
