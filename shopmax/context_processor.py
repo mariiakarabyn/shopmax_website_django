@@ -8,7 +8,7 @@ def header_categories(request):
     
     best_price = Category.objects.annotate(
         avg_price=Avg('products__price')
-    ).order_by('avg_price')[:10]
+    ).order_by('avg_price')[:6]
     
     return {
         'categories': top_categories,
