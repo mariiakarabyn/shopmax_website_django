@@ -5,22 +5,22 @@ from django.views.generic import TemplateView, ListView
 from . models import Category, Product, Brand, Image
 
 
-class RegularViev(TemplateView):
+class RegularView(TemplateView):
     template_name = 'regular-page.html'
     
-class SigdleBlogViev(TemplateView):
+class SigdleBlogView(TemplateView):
     template_name = 'single-blog.html'
 
-class BlogViev(TemplateView):
+class BlogView(TemplateView):
     template_name = 'blog.html'
 
-class CheckoutViev(TemplateView):
+class CheckoutView(TemplateView):
     template_name = 'checkout.html'
     
-class ContactViev(TemplateView):
+class ContactView(TemplateView):
     template_name = 'contact.html'
     
-class AllProductsViev(ListView):
+class AllProductsView(ListView):
     template_name = 'shop.html'
     model = Product
     context_object_name = 'products'
