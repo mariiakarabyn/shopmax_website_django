@@ -30,6 +30,16 @@
                                     
                                 </div>
                             </li>
+                            <li><a href="#">Best Price</a>
+                                <div class="dropdown">
+                                    <ul class="single-mega cn-col-4">
+                                        {% for category in best_price %}
+                                        <li><a href="{% url 'product' category.slug%}">{{category.name}}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                    
+                                </div>
+                            </li>
                             <li><a href="{% url 'index'%}">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="{% url 'index'%}">Home</a></li>
@@ -38,6 +48,7 @@
                                     <li><a href="{% url 'blog'%}">Blog</a></li>
                                     <li><a href="{% url 'single_blog'%}">Single Blog</a></li>
                                     <li><a href="{% url 'regular'%}">Regular Page</a></li>
+                                    
                                 </ul>
                             </li>
                             <li><a href="{% url 'blog'%}">Blog</a></li>

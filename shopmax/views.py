@@ -1,7 +1,6 @@
-from typing import Any
-from django.shortcuts import render, get_object_or_404
-from django.db.models import Count, Prefetch
-from django.views.generic import TemplateView, ListView, DetailView
+from django.shortcuts import get_object_or_404
+from django.db.models import Prefetch
+from django.views.generic import TemplateView, ListView
 
 from . models import Category, Product, Brand, Image
 
