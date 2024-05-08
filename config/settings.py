@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     "shopmax",
     "website",
     
-    "widget_tweaks",
+    'widget_tweaks',
+    
+    
 ]
 
 MIDDLEWARE = [

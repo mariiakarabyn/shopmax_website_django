@@ -3,7 +3,7 @@ from django.db import models
 
 class Subscribable(models.Model):
     email = models.EmailField(max_length=100, unique=True)
-    data_creeated = models.DateTimeField(auto_now_add=True)
+    data_created = models.DateTimeField(auto_now_add=True)
     
     class Meta: 
         abstract = True

@@ -4,7 +4,7 @@ from . models import Contact
 
 
 class ContactForm(forms.ModelForm):
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.Meta.required:
@@ -20,4 +20,5 @@ class ContactForm(forms.ModelForm):
             'email': forms.EmailInput(attrs={'placeholder': 'Your Email'}),
             'message': forms.Textarea(attrs={'placeholder': 'Please enter your message', 'maxlength': 1000}),
         }
+        
         

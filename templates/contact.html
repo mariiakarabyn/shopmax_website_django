@@ -2,6 +2,7 @@
 {% load static %}
 {% block main %}
 {% load widget_tweaks %}
+
 <div class="new_arrivals_area section-padding-80 clearfix">
   <h2 class="section-heading text-center">Get In Touch</h2>
   <div class="contact-area d-flex align-items-center">
@@ -13,7 +14,7 @@
           <div class="form-group row">
             <div class="col-md-6">
               <label for="c_fname" class="text-black">First Name <span class="text-danger">*</span></label>
-              {% render_field form.first_name type="text" class="form-control" id="c_fname" minlength="2" maxlength="50" %}
+              {% render_field form.first_name type="text" class="form-control" id="c_fname" name="c_fname" minlength="2" maxlength="50" %}
             </div>
             <div class="col-md-6">
               <label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
